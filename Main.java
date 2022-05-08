@@ -43,6 +43,14 @@ public class Main extends Filter { // main extends filter so it can access all t
         //
         //
         //
+        
+        for (String ee : lines){
+            
+            if (ee.charAt(0) == '(') { // if the instruction starts with '(', it is deceleration of a label
+                    ain.labelAdder(ee, lines.indexOf(ee));
+
+                }
+        }
 
         // --------------------- classifying into instructions
 
@@ -56,8 +64,7 @@ public class Main extends Filter { // main extends filter so it can access all t
             }
 
             else if (e.charAt(0) == '(') { // if the instruction starts with '(', it is deceleration of a label
-                ain.labelAdder(e, lines.indexOf(e));
-
+               
             }
 
             else { // if the doesn't start with any of the above, it is a c-instruction
