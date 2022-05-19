@@ -11,6 +11,8 @@ public class Main extends Filter { // main extends filter so it can access all t
 
     public static void main(String[] args) {
 
+        long start = System.currentTimeMillis();
+
         // making class object of all required classes...
 
         A_Instruction ain = new A_Instruction();
@@ -43,13 +45,22 @@ public class Main extends Filter { // main extends filter so it can access all t
         //
         //
         //
-        
-        for (String ee : lines){
-            
-            if (ee.charAt(0) == '(') { // if the instruction starts with '(', it is deceleration of a label
-                    ain.labelAdder(ee, lines.indexOf(ee));
 
-                }
+        // for (String ee : lines) {
+
+        // if (ee.charAt(0) == '(') { // if the instruction starts with '(', it is
+        // deceleration of a label
+        // ain.labelAdder(ee, lines.indexOf(ee));
+
+        // }
+        // }
+
+        for (int line = 0; line < lines.size(); line++) {
+            if (lines.get(line).charAt(0) == '(') { // if the instruction starts with '(', it is deceleration of a label
+                ain.labelAdder(lines.get(line), line);
+                lines.remove(line);
+            }
+
         }
 
         // --------------------- classifying into instructions
@@ -64,7 +75,7 @@ public class Main extends Filter { // main extends filter so it can access all t
             }
 
             else if (e.charAt(0) == '(') { // if the instruction starts with '(', it is deceleration of a label
-               
+
             }
 
             else { // if the doesn't start with any of the above, it is a c-instruction
@@ -90,6 +101,10 @@ public class Main extends Filter { // main extends filter so it can access all t
         catch (FileNotFoundException e) {
             System.out.println("File Not Found !");
         }
+
+        long end = System.currentTimeMillis();
+
+        System.out.println("Time taken : " + (end - start));
 
     }
 
