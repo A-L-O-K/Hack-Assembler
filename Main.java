@@ -42,18 +42,7 @@ public class Main extends Filter { // main extends filter so it can access all t
 
         // --------------------- ArrayList lines have all the filtered code lines
 
-        //
-        //
-        //
-
-        // for (String ee : lines) {
-
-        // if (ee.charAt(0) == '(') { // if the instruction starts with '(', it is
-        // deceleration of a label
-        // ain.labelAdder(ee, lines.indexOf(ee));
-
-        // }
-        // }
+       
 
         for (int line = 0; line < lines.size(); line++) {
             if (lines.get(line).charAt(0) == '(') { // if the instruction starts with '(', it is deceleration of a label
